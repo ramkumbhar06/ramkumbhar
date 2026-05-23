@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ram Kumbhar — Mortgage Underwriter & Credit Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dim: #8a6e2f;
+    --bg: #0A0A0B;
+    --bg2: #111113;
+    --bg3: #18181B;
+    --border: rgba(201,168,76,0.18);
+    --border2: rgba(201,168,76,0.35);
+    --text: #F0EAD6;
+    --text-muted: #8A8070;
+    --text-soft: #C5B99A;
+    --highlight: #1a2a1a;
+    --highlight-border: rgba(100,200,100,0.35);
+    --highlight-text: #7FD47F;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,11,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px; height: 1.5px;
+    background: var(--gold);
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 57px; left: 0; right: 0;
+    background: rgba(10,10,11,0.97);
+    border-bottom: 0.5px solid var(--border);
+    z-index: 99;
+    padding: 1.5rem 2rem;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem 5rem;
+    overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute;
+    right: -2rem; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(8rem, 18vw, 22rem);
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,168,76,0.06);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+  }
+  /* Gold line — only in hero section, not overflowing */
+  .hero-line {
+    position: absolute;
+    left: 3.2rem; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent 5%, var(--gold) 25%, var(--gold) 75%, transparent 95%);
+    opacity: 0.3;
+    z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 2.5rem; height: 0.5px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  h1 span { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  .hero-bio {
+    font-size: 0.97rem;
+    color: var(--text-soft);
+    line-height: 1.9;
+    max-width: 520px;
+    margin-bottom: 3rem;
+  }
+  .hero-cta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 0.8rem 2rem;
+    background: var(--gold);
+    color: #0A0A0B;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: none; cursor: pointer;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+    border: 0.5px solid var(--border2);
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.08); }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; position: relative; z-index: 1; }
+  .section-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+    max-width: 3rem;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+  h2 em { color: var(--gold); font-style: italic; }
+
+  /* ABOUT GRID */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+  .stat-box {
+    background: var(--bg2);
+    padding: 1.8rem 1.2rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .about-text p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+  .strengths { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+  .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.4rem 1rem;
+    border: 0.5px solid var(--border2);
+    background: rgba(201,168,76,0.04);
+  }
+
+  /* EXPERIENCE */
+  .exp-bg { background: var(--bg2); }
+  .exp-card {
+    border: 0.5px solid var(--border);
+    padding: 3rem;
+    position: relative;
+    background: var(--bg3);
+  }
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .exp-role {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .exp-date {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 0.5px solid var(--border);
+    padding: 0.5rem 1rem;
+    align-self: flex-start;
+    white-space: nowrap;
+  }
+  .exp-items {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 3rem;
+  }
+  .exp-items li {
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .exp-items li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.65em;
+    width: 4px; height: 4px;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+  .skill-item {
+    background: var(--bg);
+    padding: 2rem;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .skill-item:hover { background: var(--bg3); }
+  .skill-item.highlighted {
+    background: var(--highlight);
+    border: 0.5px solid var(--highlight-border);
+  }
+  .skill-item.highlighted:hover { background: #1f331f; }
+  .highlight-badge {
+    display: inline-block;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: rgba(100,200,100,0.12);
+    color: var(--highlight-text);
+    border: 0.5px solid var(--highlight-border);
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  .skill-icon {
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .skill-item.highlighted .skill-icon { color: var(--highlight-text); }
+  .skill-name {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .skill-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .skill-item.highlighted .skill-desc { color: #6aaa6a; }
+
+  /* AWARDS */
+  .awards-section { background: var(--bg); }
+  .awards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 1px;
+  }
+  .award-box {
+    background: var(--bg2);
+    padding: 1.8rem;
+    display: flex; align-items: center; gap: 1rem;
+    transition: background 0.3s;
+  }
+  .award-box:hover { background: var(--bg3); }
+  .award-icon {
+    width: 34px; height: 34px;
+    border: 0.5px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+  .award-name {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    font-weight: 400;
+  }
+
+  /* EDUCATION */
+  .edu-section { background: var(--bg2); }
+  .edu-card {
+    display: flex;
+    gap: 4rem;
+    border: 0.5px solid var(--border);
+    padding: 3rem;
+    background: var(--bg3);
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .edu-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(201,168,76,0.3);
+    line-height: 1.1;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .edu-details h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .edu-uni {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .emp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1.2rem;
+    border: 0.5px solid var(--border2);
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    background: transparent;
+    text-transform: uppercase;
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--bg); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .contact-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .contact-list { list-style: none; }
+  .contact-list li {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-soft);
+  }
+  .contact-list li:first-child { border-top: 0.5px solid var(--border); }
+  .c-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    min-width: 60px;
+  }
+  .c-val { color: var(--text); font-weight: 400; }
+  .contact-cta {
+    text-align: center;
+    padding: 3.5rem 2.5rem;
+    border: 0.5px solid var(--border);
+    background: var(--bg3);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 20%; right: 20%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .contact-cta p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-soft);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    position: relative; z-index: 1;
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { padding: 7rem 2rem 4rem 2rem; }
+    .hero-line { display: none; }
+    .hero-bg-text { opacity: 0.5; font-size: clamp(5rem, 20vw, 10rem); right: -1rem; }
+
+    section { padding: 4rem 2rem; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-stats { grid-template-columns: repeat(2, 1fr); }
+
+    .exp-card { padding: 2rem 1.5rem; }
+    .exp-items { grid-template-columns: 1fr; gap: 0.8rem; }
+
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+
+    .awards-row { grid-template-columns: 1fr 1fr; }
+
+    .edu-card { gap: 2rem; padding: 2rem 1.5rem; }
+    .edu-year { font-size: 2.2rem; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-cta { padding: 2.5rem 1.5rem; }
+
+    footer { padding: 1.5rem 2rem; flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 520px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .awards-row { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    .edu-card { flex-direction: column; gap: 1rem; }
+    .exp-card { padding: 1.5rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Ram Kumbhar</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="menuBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#awards" onclick="closeMenu()">Awards</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-line"></div>
+  <div class="hero-bg-text">Credit</div>
+  <div class="hero-content">
+    <div class="hero-tag">US Mortgage Specialist</div>
+    <h1>Ram<br><span>Kumbhar</span></h1>
+    <p class="hero-sub">Mortgage Underwriter · Credit Specialist</p>
+    <p class="hero-bio">Experienced US Mortgage Credit Specialist with deep expertise in credit analysis, wage income calculation, and investor-guideline compliance. Transforming complex loan files into underwriting-ready decisions.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="#experience" class="btn-outline">View Experience</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">Profile</div>
+  <h2>Built on <em>precision</em><br>& compliance</h2>
+  <div class="about-grid">
+    <div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <span class="stat-num">2+</span>
+          <span class="stat-label">Years at Infosys</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">6*</span>
+          <span class="stat-label">Awards Earned</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">9*</span>
+          <span class="stat-label">Employee of the Month</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Languages</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text fade-in">
+      <p>Experienced in end-to-end credit analysis, DTI calculations, and liability reconciliation per US investor guidelines. Skilled at calculating and validating wage income using pay stubs, W-2s, employment verification, and bank statements.</p>
+      <p>Proven ability to handle high-volume loan files, support team operations, and drive quality improvement initiatives while maintaining accuracy and compliance — earning multiple performance awards and 9* times Employee of the Month recognition.</p>
+      <div class="strengths">
+        <span class="tag">Quick Learner</span>
+        <span class="tag">Team Handling</span>
+        <span class="tag">Detail Oriented</span>
+        <span class="tag">Decision Making</span>
+        <span class="tag">English</span>
+        <span class="tag">Hindi</span>
+        <span class="tag">Marathi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="exp-bg">
+  <div class="section-tag">Work History</div>
+  <h2>Professional <em>experience</em></h2>
+  <div class="exp-card fade-in">
+    <div class="exp-header">
+      <div>
+        <div class="exp-company">Infosys BPM Ltd.</div>
+        <div class="exp-role">Senior Process Executive</div>
+      </div>
+      <div class="exp-date">March 2024 — Present</div>
+    </div>
+    <ul class="exp-items">
+      <li>Performed end-to-end credit analysis including liability validation, reconciliation, and accurate DTI calculations per US investor guidelines.</li>
+      <li>Calculated and validated wage income using pay stubs, W-2s, employment verification, and bank statements.</li>
+      <li>Analyzed other income such as Social Security, Disability, IRA, and Asset Depletion per investor guidelines.</li>
+      <li>Identified and resolved credit report omissions, discrepancies, and payoff conditions to deliver underwriting-ready loan files.</li>
+      <li>Applied the 4 C's of Credit — Credit, Capacity, Capital, and Collateral — to assess borrower risk and support underwriting decisions.</li>
+      <li>Provided training and guidance to new team members on credit and liability review processes.</li>
+      <li>Supported team handling and daily workflow coordination, taking initiatives to improve quality and reduce rework.</li>
+      <li>Managed multiple loan files simultaneously while meeting SLA and quality standards.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">Expertise</div>
+  <h2>Core <em>skills</em></h2>
+  <div class="skills-grid fade-in">
+    <div class="skill-item">
+      <span class="skill-icon">⬡</span>
+      <div class="skill-name">US Mortgage Credit Analysis</div>
+      <div class="skill-desc">End-to-end credit review, liability validation, and reconciliation per US investor guidelines.</div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">⬡</span>
+      <div class="skill-name">Wage & Other Income Calculation</div>
+      <div class="skill-desc">Pay stubs, W-2s, Social Security, Disability, IRA, and Asset Depletion income analysis.</div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">⬡</span>
+      <div class="skill-name">DTI & Liability Review</div>
+      <div class="skill-desc">Precise debt-to-income calculations and liability omission/payoff resolution.</div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">⬡</span>
+      <div class="skill-name">4 C's of Credit</div>
+      <div class="skill-desc">Borrower risk assessment through Credit, Capacity, Capital, and Collateral evaluation.</div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">⬡</span>
+      <div class="skill-name">Investor Guideline Compliance</div>
+      <div class="skill-desc">Deep knowledge of US investor guidelines for mortgage loan origination and underwriting.</div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">⬡</span>
+      <div class="skill-name">LOS — Encompass</div>
+      <div class="skill-desc">Proficient with Encompass Loan Origination System and full Microsoft Office productivity suite.</div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">⬡</span>
+      <div class="skill-name">Performance Reporting</div>
+      <div class="skill-desc">Sheet management and reporting to track quality metrics and team productivity.</div>
+    </div>
+    <div class="skill-item highlighted">
+      <div class="highlight-badge">✦ Featured Skill</div>
+      <span class="skill-icon">⬡</span>
+      <div class="skill-name">Google Sheets Automation</div>
+      <div class="skill-desc">AI-powered workflow automation using Google Sheets and Apps Script — building smart pipelines that reduce manual effort and improve data accuracy.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="awards-section">
+  <div class="section-tag">Recognition</div>
+  <h2>Awards &amp; <em>achievements</em></h2>
+  <div class="awards-row fade-in">
+    <div class="award-box">
+      <div class="award-icon">★</div>
+      <div class="award-name">Rising Star</div>
+    </div>
+    <div class="award-box">
+      <div class="award-icon">★</div>
+      <div class="award-name">Individual Extra-Miler (×2)</div>
+    </div>
+    <div class="award-box">
+      <div class="award-icon">★</div>
+      <div class="award-name">Spot Award</div>
+    </div>
+  </div>
+  <div class="awards-row">
+    <div class="award-box">
+      <div class="award-icon">★</div>
+      <div class="award-name">Award of Excellence (Client)</div>
+    </div>
+    <div class="award-box">
+      <div class="award-icon">★</div>
+      <div class="award-name">iStar Award</div>
+    </div>
+    <div class="award-box">
+      <div class="award-icon">★</div>
+      <div class="award-name">Highflyer Award</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-section">
+  <div class="section-tag">Education</div>
+  <h2>Academic <em>background</em></h2>
+  <div class="edu-card fade-in">
+    <div class="edu-year">2020–2023</div>
+    <div class="edu-details">
+      <h3>Bachelor of Computer Applications</h3>
+      <div class="edu-uni">Rani Channamma University, Belagavi</div>
+      <div class="emp-badge">★ &nbsp;Student of the Year</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-tag">Contact</div>
+  <h2>Let's <em>connect</em></h2>
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <h3>"Open to new opportunities in US Mortgage Credit &amp; Underwriting roles."</h3>
+      <ul class="contact-list">
+        <li>
+          <span class="c-label">Phone</span>
+          <span class="c-val">+91 82962 91155</span>
+        </li>
+        <li>
+          <span class="c-label">Email</span>
+          <span class="c-val">kumbhar6609@gmail.com</span>
+        </li>
+        <li>
+          <span class="c-label">Location</span>
+          <span class="c-val">Pune, Maharashtra</span>
+        </li>
+      </ul>
+    </div>
+    <div class="contact-cta fade-in">
+      <p>"Every great loan file starts with great credit analysis."</p>
+      <a href="mailto:kumbhar6609@gmail.com" class="btn-primary">Send an Email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Ram Kumbhar</span>
+  <span>Mortgage Underwriter · Credit Specialist · Pune, MH</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => menu.classList.toggle('open'));
+  function closeMenu() { menu.classList.remove('open'); }
+</script>
+
+</body>
+</html>
