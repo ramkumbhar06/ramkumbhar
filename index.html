@@ -358,7 +358,7 @@
   /* SKILLS */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--border);
   }
@@ -383,8 +383,15 @@
     color: var(--highlight-text);
     border: 0.5px solid var(--highlight-border);
     padding: 0.2rem 0.6rem;
+    margin-bottom: 0;
+  }
+  .skill-icon-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
     margin-bottom: 0.8rem;
   }
+  .skill-icon-row .skill-icon { margin-bottom: 0; }
   .skill-icon {
     font-size: 1.4rem;
     color: var(--gold);
@@ -580,7 +587,9 @@
     .exp-card { padding: 2rem 1.5rem; }
     .exp-items { grid-template-columns: 1fr; gap: 0.8rem; }
 
-    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    #skills .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid .skill-item[style] { grid-column: span 1 !important; }
 
     .awards-row { grid-template-columns: 1fr 1fr; }
 
@@ -595,6 +604,7 @@
 
   @media (max-width: 520px) {
     .skills-grid { grid-template-columns: 1fr; }
+    #skills .skills-grid { grid-template-columns: 1fr; }
     .awards-row { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: 1fr 1fr; }
     h1 { font-size: 3rem; }
@@ -751,8 +761,10 @@
       <div class="skill-desc">Sheet management and reporting to track quality metrics and team productivity.</div>
     </div>
     <div class="skill-item highlighted">
-      <div class="highlight-badge">✦ Featured Skill</div>
-      <span class="skill-icon">⬡</span>
+      <div class="skill-icon-row">
+        <span class="skill-icon">⬡</span>
+        <span class="highlight-badge">✦ Featured</span>
+      </div>
       <div class="skill-name">Google Sheets Automation</div>
       <div class="skill-desc">AI-powered workflow automation using Google Sheets and Apps Script — building smart pipelines that reduce manual effort and improve data accuracy.</div>
     </div>
