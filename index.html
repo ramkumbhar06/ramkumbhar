@@ -4,620 +4,445 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ram Kumbhar — Mortgage Underwriter & Credit Specialist</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0B1F3A;
+  --navy2:#112240;
+  --navy3:#1A325A;
+  --silver:#C8D6E5;
+  --silver2:#E8EEF4;
+  --blue:#4A90C4;
+  --blue2:#6AAED8;
+  --accent:#2A7BBF;
+  --border:rgba(74,144,196,0.2);
+  --border2:rgba(74,144,196,0.4);
+  --text:#E8EEF4;
+  --text-muted:#7A9AB8;
+  --text-soft:#A8BDD0;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--navy);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-weight:400;
+  line-height:1.7;
+  overflow-x:hidden;
+}
 
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C96A;
-    --gold-dim: #8a6e2f;
-    --bg: #0A0A0B;
-    --bg2: #111113;
-    --bg3: #18181B;
-    --border: rgba(201,168,76,0.18);
-    --border2: rgba(201,168,76,0.35);
-    --text: #F0EAD6;
-    --text-muted: #8A8070;
-    --text-soft: #C5B99A;
-    --highlight: #1a2a1a;
-    --highlight-border: rgba(100,200,100,0.35);
-    --highlight-text: #7FD47F;
-  }
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 5%;
+  height:64px;
+  background:rgba(11,31,58,0.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--white);
+  text-decoration:none;
+  letter-spacing:0.03em;
+}
+.nav-logo span{color:var(--blue2);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-size:0.78rem;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--text-muted);text-decoration:none;
+  transition:color 0.25s;
+}
+.nav-links a:hover{color:var(--blue2);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--blue2);transition:all 0.3s;}
+.mobile-menu{
+  display:none;position:fixed;top:64px;left:0;right:0;
+  background:rgba(11,31,58,0.98);
+  border-bottom:1px solid var(--border);
+  z-index:99;padding:1.5rem 5%;flex-direction:column;gap:0;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text-muted);text-decoration:none;
+  padding:0.9rem 0;border-bottom:1px solid var(--border);
+  transition:color 0.25s;
+}
+.mobile-menu a:hover{color:var(--blue2);}
 
-  html { scroll-behavior: smooth; }
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:64px 5% 0;
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg, #0B1F3A 0%, #112240 60%, #0d2a4a 100%);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 50%, rgba(74,144,196,0.08) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:3rem;width:100%;
+}
+.hero-left{}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  background:rgba(74,144,196,0.12);
+  border:1px solid var(--border2);
+  border-radius:2px;
+  padding:0.4rem 1rem;
+  font-size:0.7rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--blue2);margin-bottom:1.8rem;
+}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue2);}
+h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(2.8rem,5.5vw,5rem);
+  font-weight:700;line-height:1.1;
+  color:var(--white);
+  margin-bottom:0.5rem;
+  letter-spacing:-0.01em;
+}
+h1 .highlight{color:var(--blue2);}
+.hero-title{
+  font-size:clamp(0.9rem,1.5vw,1.05rem);
+  font-weight:400;color:var(--text-muted);
+  letter-spacing:0.05em;text-transform:uppercase;
+  margin-bottom:1.8rem;
+}
+.hero-bio{
+  font-size:1rem;color:var(--text-soft);
+  line-height:1.85;max-width:560px;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{
+  padding:0.75rem 2rem;
+  background:var(--accent);color:var(--white);
+  font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  border-radius:2px;transition:background 0.25s;display:inline-block;
+}
+.btn-primary:hover{background:var(--blue);}
+.btn-outline{
+  padding:0.75rem 2rem;
+  background:transparent;color:var(--blue2);
+  font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;border:1px solid var(--border2);
+  border-radius:2px;transition:all 0.25s;display:inline-block;
+}
+.btn-outline:hover{background:rgba(74,144,196,0.1);}
+.hero-right{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:320px;
+  max-width:420px;
+}
+.mortgage-cloud{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.45rem 0.5rem;
+  align-content:center;
+  padding:1.8rem 1.6rem;
+  position:relative;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:rgba(74,144,196,0.04);
+  line-height:1.6;
+}
+.mc-badge{
+  display:inline-block;
+  font-family:'Inter',sans-serif;
+  font-size:0.68rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--navy);
+  background:var(--blue2);
+  border-radius:3px;
+  padding:0.25rem 0.6rem;
+  transition:transform 0.3s,box-shadow 0.3s;
+  cursor:default;
+  box-shadow:0 1px 6px rgba(74,144,196,0.3);
+}
+.mc-badge:hover{transform:rotate(0deg) scale(1.1) !important; box-shadow:0 2px 12px rgba(74,144,196,0.5);}
+.encompass-badge{
+  background:transparent;
+  color:var(--blue2);
+  border:1.5px solid var(--blue2);
+  box-shadow:none;
+}
+.encompass-badge:hover{background:rgba(74,144,196,0.12);}
+.mc-word{
+  font-family:'Inter',sans-serif;
+  font-weight:500;
+  letter-spacing:0.01em;
+  line-height:1;
+  border-radius:2px;
+  padding:0.25rem 0.45rem;
+  transition:opacity 0.3s,color 0.3s,transform 0.3s;
+  cursor:default;
+  display:inline-block;
+}
+.mc-word:hover{ opacity:1 !important; color:var(--blue2) !important; transform:rotate(0deg) scale(1.08) !important; }
+.mc-xl{ font-size:1.15rem; }
+.mc-lg{ font-size:0.95rem; }
+.mc-md{ font-size:0.8rem; }
+.mc-sm{ font-size:0.68rem; }
+.mc-bright{ color:var(--blue2); opacity:1; }
+.mc-mid{ color:var(--text-soft); opacity:0.75; }
+.mc-dim{ color:var(--text-muted); opacity:0.45; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(10,10,11,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 0.5px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: var(--gold); }
+/* ── SECTIONS ── */
+section{padding:6rem 5%;position:relative;z-index:1;}
+.section-label{
+  font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--blue2);margin-bottom:0.6rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.section-label::before{content:'';width:28px;height:2px;background:var(--accent);border-radius:2px;}
+h2{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  font-weight:700;color:var(--white);
+  margin-bottom:2.5rem;line-height:1.2;
+  letter-spacing:-0.01em;
+}
 
-  /* Hamburger */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-  }
-  .hamburger span {
-    display: block;
-    width: 22px; height: 1.5px;
-    background: var(--gold);
-    transition: all 0.3s;
-  }
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 57px; left: 0; right: 0;
-    background: rgba(10,10,11,0.97);
-    border-bottom: 0.5px solid var(--border);
-    z-index: 99;
-    padding: 1.5rem 2rem;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-decoration: none;
-    padding: 0.5rem 0;
-    border-bottom: 0.5px solid var(--border);
-  }
-  .mobile-menu a:hover { color: var(--gold); }
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+.stat-card{
+  background:var(--navy2);padding:1.8rem 1.5rem;text-align:center;
+}
+.stat-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:2.2rem;font-weight:700;color:var(--blue2);
+  display:block;margin-bottom:0.4rem;line-height:1;
+}
+.stat-label{font-size:0.62rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);line-height:1.4;}
+.about-text p{font-size:0.97rem;color:var(--text-soft);line-height:1.9;margin-bottom:1.2rem;}
+.tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;}
+.tag{
+  font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--blue2);padding:0.35rem 0.9rem;
+  border:1px solid var(--border2);border-radius:2px;
+  background:rgba(74,144,196,0.06);
+}
 
-  /* HERO */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 8rem 4rem 4rem 5rem;
-    overflow: hidden;
-  }
-  .hero-bg-text {
-    position: absolute;
-    right: -2rem; top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(8rem, 18vw, 22rem);
-    font-weight: 300;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(201,168,76,0.06);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    user-select: none;
-    pointer-events: none;
-    white-space: nowrap;
-    z-index: 0;
-  }
-  /* Gold line — only in hero section, not overflowing */
-  .hero-line {
-    position: absolute;
-    left: 3.2rem; top: 0; bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, transparent 5%, var(--gold) 25%, var(--gold) 75%, transparent 95%);
-    opacity: 0.3;
-    z-index: 0;
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 720px; }
-  .hero-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 1rem;
-  }
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 2.5rem; height: 0.5px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-  }
-  h1 span { color: var(--gold); font-style: italic; }
-  .hero-sub {
-    font-size: 0.78rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-  }
-  .hero-bio {
-    font-size: 0.97rem;
-    color: var(--text-soft);
-    line-height: 1.9;
-    max-width: 520px;
-    margin-bottom: 3rem;
-  }
-  .hero-cta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .btn-primary {
-    padding: 0.8rem 2rem;
-    background: var(--gold);
-    color: #0A0A0B;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s;
-    border: none; cursor: pointer;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: var(--gold-light); }
-  .btn-outline {
-    padding: 0.8rem 2rem;
-    background: transparent;
-    color: var(--gold);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 400;
-    text-decoration: none;
-    border: 0.5px solid var(--border2);
-    transition: all 0.3s;
-    cursor: pointer;
-    display: inline-block;
-  }
-  .btn-outline:hover { background: rgba(201,168,76,0.08); }
+/* ── EXPERIENCE ── */
+.exp-section{background:var(--navy2);}
+.exp-card{
+  background:var(--navy3);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:2.5rem 3rem;
+  position:relative;overflow:hidden;
+}
+.exp-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(to right,var(--accent),var(--blue2));
+}
+.exp-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:2rem;flex-wrap:wrap;gap:1rem;
+}
+.exp-company{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;
+}
+.exp-role{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue2);
+}
+.exp-date{
+  font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text-muted);background:rgba(74,144,196,0.1);
+  border:1px solid var(--border);border-radius:2px;
+  padding:0.45rem 1rem;white-space:nowrap;align-self:flex-start;
+}
+.exp-list{
+  list-style:none;
+  display:grid;grid-template-columns:1fr 1fr;gap:0.9rem 3rem;
+}
+.exp-list li{
+  font-size:0.88rem;color:var(--text-soft);line-height:1.75;
+  padding-left:1rem;position:relative;
+}
+.exp-list li::before{
+  content:'';position:absolute;left:0;top:0.7em;
+  width:4px;height:4px;border-radius:50%;background:var(--blue2);
+}
 
-  /* SECTIONS */
-  section { padding: 6rem 4rem; position: relative; z-index: 1; }
-  .section-tag {
-    font-size: 0.6rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold-dim);
-    margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 1rem;
-  }
-  .section-tag::after {
-    content: '';
-    flex: 1;
-    height: 0.5px;
-    background: var(--border);
-    max-width: 3rem;
-  }
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 300;
-    letter-spacing: -0.01em;
-    color: var(--text);
-    margin-bottom: 3rem;
-    line-height: 1.1;
-  }
-  h2 em { color: var(--gold); font-style: italic; }
+/* ── SKILLS ── */
+.skills-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+}
+.skill-card{
+  background:var(--navy2);padding:1.8rem;
+  transition:background 0.25s;
+  position:relative;
+}
+.skill-card:hover{background:var(--navy3);}
+.skill-card.featured{
+  background:#0d2744;
+  border-top:2px solid var(--blue2);
+}
+.skill-card.featured:hover{background:#112d50;}
+.feat-badge{
+  display:inline-block;
+  font-size:0.58rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--blue2);border:1px solid var(--border2);
+  border-radius:2px;padding:0.18rem 0.6rem;
+  margin-bottom:0.7rem;background:rgba(74,144,196,0.1);
+}
+.skill-icon-row{display:flex;align-items:center;gap:0.7rem;margin-bottom:0.7rem;}
+.skill-hex{font-size:1.1rem;color:var(--blue2);}
+.skill-name{font-size:0.88rem;font-weight:600;color:var(--white);margin-bottom:0.35rem;}
+.skill-desc{font-size:0.75rem;color:var(--text-muted);line-height:1.65;}
+.skill-card.featured .skill-desc{color:var(--text-soft);}
 
-  /* ABOUT GRID */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-  }
-  .stat-box {
-    background: var(--bg2);
-    padding: 1.8rem 1.2rem;
-    text-align: center;
-  }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .stat-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    line-height: 1.4;
-  }
-  .about-text p {
-    color: var(--text-soft);
-    font-size: 0.95rem;
-    line-height: 1.9;
-    margin-bottom: 1.5rem;
-  }
-  .strengths { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
-  .tag {
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    padding: 0.4rem 1rem;
-    border: 0.5px solid var(--border2);
-    background: rgba(201,168,76,0.04);
-  }
+/* ── AWARDS ── */
+.awards-section{background:var(--navy2);}
+.awards-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+}
+.award-card{
+  background:var(--navy);padding:1.6rem 1.8rem;
+  display:flex;align-items:center;gap:1rem;
+  transition:background 0.25s;
+}
+.award-card:hover{background:var(--navy3);}
+.award-star{
+  width:36px;height:36px;flex-shrink:0;
+  background:rgba(74,144,196,0.12);border:1px solid var(--border2);
+  border-radius:2px;display:flex;align-items:center;justify-content:center;
+  color:var(--blue2);font-size:0.9rem;
+}
+.award-name{font-size:0.85rem;font-weight:500;color:var(--text-soft);}
 
-  /* EXPERIENCE */
-  .exp-bg { background: var(--bg2); }
-  .exp-card {
-    border: 0.5px solid var(--border);
-    padding: 3rem;
-    position: relative;
-    background: var(--bg3);
-  }
-  .exp-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--gold), transparent);
-  }
-  .exp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .exp-company {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-  }
-  .exp-role {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .exp-date {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    border: 0.5px solid var(--border);
-    padding: 0.5rem 1rem;
-    align-self: flex-start;
-    white-space: nowrap;
-  }
-  .exp-items {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem 3rem;
-  }
-  .exp-items li {
-    font-size: 0.88rem;
-    color: var(--text-soft);
-    line-height: 1.7;
-    padding-left: 1.2rem;
-    position: relative;
-  }
-  .exp-items li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0.65em;
-    width: 4px; height: 4px;
-    background: var(--gold);
-    opacity: 0.7;
-  }
+/* ── EDUCATION ── */
+.edu-card{
+  background:var(--navy2);border:1px solid var(--border);
+  border-radius:4px;padding:2.5rem 3rem;
+  display:flex;gap:3rem;align-items:center;flex-wrap:wrap;
+  position:relative;overflow:hidden;
+}
+.edu-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(to right,var(--accent),var(--blue2));
+}
+.edu-year{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.8rem;font-weight:700;
+  color:rgba(74,144,196,0.35);line-height:1.1;flex-shrink:0;
+  white-space:nowrap;
+}
+.edu-info h3{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;
+}
+.edu-uni{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:1rem;
+}
+.edu-badges{display:flex;flex-wrap:wrap;gap:0.75rem;}
+.edu-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.72rem;font-weight:500;color:var(--blue2);
+  border:1px solid var(--border2);border-radius:2px;
+  padding:0.4rem 1rem;background:rgba(74,144,196,0.07);
+}
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-  }
-  .skill-item {
-    background: var(--bg);
-    padding: 2rem;
-    transition: background 0.3s;
-    position: relative;
-  }
-  .skill-item:hover { background: var(--bg3); }
-  .skill-item.highlighted {
-    background: var(--highlight);
-    border: 0.5px solid var(--highlight-border);
-  }
-  .skill-item.highlighted:hover { background: #1f331f; }
-  .highlight-badge {
-    display: inline-block;
-    font-size: 0.55rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    background: rgba(100,200,100,0.12);
-    color: var(--highlight-text);
-    border: 0.5px solid var(--highlight-border);
-    padding: 0.2rem 0.6rem;
-    margin-bottom: 0;
-  }
-  .skill-icon-row {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 0.8rem;
-  }
-  .skill-icon-row .skill-icon { margin-bottom: 0; }
-  .skill-icon {
-    font-size: 1.4rem;
-    color: var(--gold);
-    margin-bottom: 0.8rem;
-    display: block;
-  }
-  .skill-item.highlighted .skill-icon { color: var(--highlight-text); }
-  .skill-name {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-  }
-  .skill-desc {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-  .skill-item.highlighted .skill-desc { color: #6aaa6a; }
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-info h3{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.1rem;font-weight:400;font-style:italic;
+  color:var(--text-muted);margin-bottom:2rem;line-height:1.7;
+}
+.contact-list{list-style:none;}
+.contact-list li{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.9rem 0;border-bottom:1px solid var(--border);
+  font-size:0.88rem;
+}
+.contact-list li:first-child{border-top:1px solid var(--border);}
+.c-label{
+  font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text-muted);min-width:65px;
+}
+.c-val{color:var(--white);font-weight:400;}
+.contact-cta{
+  background:var(--navy2);border:1px solid var(--border);
+  border-radius:4px;padding:3rem 2.5rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.contact-cta::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(to right,var(--accent),var(--blue2));
+}
+.contact-cta p{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.3rem;font-weight:400;font-style:italic;
+  color:var(--text-soft);line-height:1.6;margin-bottom:2rem;
+}
 
-  /* AWARDS */
-  .awards-section { background: var(--bg); }
-  .awards-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-bottom: 1px;
-  }
-  .award-box {
-    background: var(--bg2);
-    padding: 1.8rem;
-    display: flex; align-items: center; gap: 1rem;
-    transition: background 0.3s;
-  }
-  .award-box:hover { background: var(--bg3); }
-  .award-icon {
-    width: 34px; height: 34px;
-    border: 0.5px solid var(--border2);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    color: var(--gold);
-    font-size: 0.9rem;
-  }
-  .award-name {
-    font-size: 0.82rem;
-    color: var(--text-soft);
-    font-weight: 400;
-  }
+/* ── FOOTER ── */
+footer{
+  padding:1.8rem 5%;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:0.5rem;
+  font-size:0.68rem;font-weight:400;letter-spacing:0.08em;
+  color:var(--text-muted);background:var(--navy);
+  position:relative;z-index:1;
+}
 
-  /* EDUCATION */
-  .edu-section { background: var(--bg2); }
-  .edu-card {
-    display: flex;
-    gap: 4rem;
-    border: 0.5px solid var(--border);
-    padding: 3rem;
-    background: var(--bg3);
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .edu-year {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 300;
-    color: rgba(201,168,76,0.3);
-    line-height: 1.1;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-  .edu-details h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-  }
-  .edu-uni {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-  }
-  .emp-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.45rem 1.2rem;
-    border: 0.5px solid var(--border2);
-    color: var(--gold);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    background: transparent;
-    text-transform: uppercase;
-  }
+/* ── ANIMATIONS ── */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
 
-  /* CONTACT */
-  .contact-section { background: var(--bg); }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .contact-info h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 300;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    font-style: italic;
-    line-height: 1.7;
-  }
-  .contact-list { list-style: none; }
-  .contact-list li {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 0.5px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--text-soft);
-  }
-  .contact-list li:first-child { border-top: 0.5px solid var(--border); }
-  .c-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    min-width: 60px;
-  }
-  .c-val { color: var(--text); font-weight: 400; }
-  .contact-cta {
-    text-align: center;
-    padding: 3.5rem 2.5rem;
-    border: 0.5px solid var(--border);
-    background: var(--bg3);
-    position: relative;
-    overflow: hidden;
-  }
-  .contact-cta::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 20%; right: 20%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-  }
-  .contact-cta p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--text-soft);
-    line-height: 1.4;
-    margin-bottom: 2rem;
-  }
-
-  /* FOOTER */
-  footer {
-    padding: 2rem 4rem;
-    border-top: 0.5px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    position: relative; z-index: 1;
-    flex-wrap: wrap; gap: 0.5rem;
-  }
-
-  /* ANIMATIONS */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    nav { padding: 1.2rem 2rem; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-
-    .hero { padding: 7rem 2rem 4rem 2rem; }
-    .hero-line { display: none; }
-    .hero-bg-text { opacity: 0.5; font-size: clamp(5rem, 20vw, 10rem); right: -1rem; }
-
-    section { padding: 4rem 2rem; }
-
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .about-stats { grid-template-columns: repeat(2, 1fr); }
-
-    .exp-card { padding: 2rem 1.5rem; }
-    .exp-items { grid-template-columns: 1fr; gap: 0.8rem; }
-
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    #skills .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    .skills-grid .skill-item[style] { grid-column: span 1 !important; }
-
-    .awards-row { grid-template-columns: 1fr 1fr; }
-
-    .edu-card { gap: 2rem; padding: 2rem 1.5rem; }
-    .edu-year { font-size: 2.2rem; }
-
-    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .contact-cta { padding: 2.5rem 1.5rem; }
-
-    footer { padding: 1.5rem 2rem; flex-direction: column; text-align: center; }
-  }
-
-  @media (max-width: 520px) {
-    .skills-grid { grid-template-columns: 1fr; }
-    #skills .skills-grid { grid-template-columns: 1fr; }
-    .awards-row { grid-template-columns: 1fr; }
-    .about-stats { grid-template-columns: 1fr 1fr; }
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2rem; }
-    .edu-card { flex-direction: column; gap: 1rem; }
-    .exp-card { padding: 1.5rem 1rem; }
-  }
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-right{min-width:unset;max-width:100%;width:100%;}
+  .mortgage-cloud{padding:1.5rem 1.2rem;gap:0.5rem 0.6rem;}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .exp-list{grid-template-columns:1fr;}
+  .exp-card{padding:2rem 1.5rem;}
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .awards-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  section{padding:4rem 5%;}
+}
+@media(max-width:540px){
+  .skills-grid{grid-template-columns:1fr;}
+  .awards-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  h1{font-size:2.5rem;}
+  .hero-right{gap:1px;}
+  footer{flex-direction:column;text-align:center;}
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo" style="text-decoration:none;">Ram Kumbhar</a>
+  <a href="#hero" class="nav-logo">Ram <span>Kumbhar</span></a>
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -626,7 +451,7 @@
     <li><a href="#awards">Awards</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="hamburger" id="menuBtn" aria-label="Toggle menu">
+  <button class="hamburger" id="menuBtn" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -642,49 +467,80 @@
 
 <!-- HERO -->
 <div class="hero" id="hero">
-  <div class="hero-line"></div>
-  <div class="hero-bg-text">Credit</div>
-  <div class="hero-content">
-    <div class="hero-tag">US Mortgage Specialist</div>
-    <h1>Ram<br><span>Kumbhar</span></h1>
-    <p class="hero-sub">Mortgage Underwriter · Credit Specialist</p>
-    <p class="hero-bio">Experienced US Mortgage Credit Specialist with deep expertise in credit analysis, wage income calculation, and investor-guideline compliance. Transforming complex loan files into underwriting-ready decisions.</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Get In Touch</a>
-      <a href="#experience" class="btn-outline">View Experience</a>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>Ram<br><span class="highlight">Kumbhar</span></h1>
+      <p class="hero-title">Mortgage Underwriter &nbsp;·&nbsp; Credit Specialist</p>
+      <p class="hero-bio">Experienced US Mortgage Credit Specialist with deep expertise in credit analysis, wage income calculation, DTI review, and investor-guideline compliance — delivering accurate, underwriting-ready loan files.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get In Touch</a>
+        <a href="#experience" class="btn-outline">View Experience</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="mortgage-cloud">
+        <span class="mc-word mc-xl mc-bright" style="transform:rotate(-2deg)">Credit Analysis</span>
+        <span class="mc-badge" style="transform:rotate(1deg)">FNMA</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(1deg)">Pay Stubs</span>
+        <span class="mc-badge" style="transform:rotate(-1.5deg)">FHLMC</span>
+        <span class="mc-word mc-md mc-mid" style="transform:rotate(-1deg)">DTI Review</span>
+        <span class="mc-badge" style="transform:rotate(2deg)">FHA</span>
+        <span class="mc-word mc-lg mc-bright" style="transform:rotate(1.5deg)">Underwriting</span>
+        <span class="mc-badge" style="transform:rotate(-1deg)">VA</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(-2deg)">Payoff Conditions</span>
+        <span class="mc-badge" style="transform:rotate(1.5deg)">USDA</span>
+        <span class="mc-word mc-md mc-mid" style="transform:rotate(1deg)">W-2 Validation</span>
+        <span class="mc-badge encompass-badge" style="transform:rotate(-2deg)">Encompass</span>
+        <span class="mc-word mc-xl mc-mid" style="transform:rotate(-1.5deg)">Investor Guidelines</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(2deg)">Employment Verification</span>
+        <span class="mc-word mc-lg mc-bright" style="transform:rotate(-1deg)">Wage Income</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(1.5deg)">Disability Income</span>
+        <span class="mc-word mc-md mc-mid" style="transform:rotate(-2deg)">Reconciliation</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(1deg)">Bank Statements</span>
+        <span class="mc-word mc-lg mc-mid" style="transform:rotate(-1deg)">Liability Review</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(2deg)">Omissions</span>
+        <span class="mc-word mc-xl mc-bright" style="transform:rotate(1deg)">4 C's of Credit</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(-2deg)">Asset Depletion</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(-1deg)">Borrower Risk</span>
+        <span class="mc-word mc-lg mc-mid" style="transform:rotate(2deg)">SLA Standards</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(-1.5deg)">Quality Control</span>
+        <span class="mc-word mc-md mc-mid" style="transform:rotate(1deg)">Loan Files</span>
+        <span class="mc-word mc-lg mc-bright" style="transform:rotate(1.5deg)">US Mortgage</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(-1deg)">IRA Income</span>
+        <span class="mc-word mc-md mc-mid" style="transform:rotate(2deg)">Performance Reporting</span>
+        <span class="mc-word mc-sm mc-dim" style="transform:rotate(-1.5deg)">Google Sheets AI</span>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-tag">Profile</div>
-  <h2>Built on <em>precision</em><br>& compliance</h2>
+  <div class="section-label">Profile</div>
+  <h2>Built on Precision & Compliance</h2>
   <div class="about-grid">
-    <div>
-      <div class="about-stats">
-        <div class="stat-box">
-          <span class="stat-num">2+</span>
-          <span class="stat-label">Years at Infosys</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-num">6*</span>
-          <span class="stat-label">Awards Earned</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-num">9*</span>
-          <span class="stat-label">Employee of the Month</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-num">3</span>
-          <span class="stat-label">Languages</span>
-        </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-num">2+</span>
+        <span class="stat-label">Years at Infosys</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">6*</span>
+        <span class="stat-label">Awards Earned</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">9*</span>
+        <span class="stat-label">Employee of Month</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Languages</span>
       </div>
     </div>
     <div class="about-text fade-in">
       <p>Experienced in end-to-end credit analysis, DTI calculations, and liability reconciliation per US investor guidelines. Skilled at calculating and validating wage income using pay stubs, W-2s, employment verification, and bank statements.</p>
       <p>Proven ability to handle high-volume loan files, support team operations, and drive quality improvement initiatives while maintaining accuracy and compliance — earning multiple performance awards and 9* times Employee of the Month recognition.</p>
-      <div class="strengths">
+      <div class="tags">
         <span class="tag">Quick Learner</span>
         <span class="tag">Team Handling</span>
         <span class="tag">Detail Oriented</span>
@@ -698,9 +554,9 @@
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="exp-bg">
-  <div class="section-tag">Work History</div>
-  <h2>Professional <em>experience</em></h2>
+<section id="experience" class="exp-section">
+  <div class="section-label">Work History</div>
+  <h2>Professional Experience</h2>
   <div class="exp-card fade-in">
     <div class="exp-header">
       <div>
@@ -709,7 +565,7 @@
       </div>
       <div class="exp-date">March 2024 — Present</div>
     </div>
-    <ul class="exp-items">
+    <ul class="exp-list">
       <li>Performed end-to-end credit analysis including liability validation, reconciliation, and accurate DTI calculations per US investor guidelines.</li>
       <li>Calculated and validated wage income using pay stubs, W-2s, employment verification, and bank statements.</li>
       <li>Analyzed other income such as Social Security, Disability, IRA, and Asset Depletion per investor guidelines.</li>
@@ -724,48 +580,48 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-tag">Expertise</div>
-  <h2>Core <em>skills</em></h2>
+  <div class="section-label">Expertise</div>
+  <h2>Core Skills</h2>
   <div class="skills-grid fade-in">
-    <div class="skill-item">
-      <span class="skill-icon">⬡</span>
+    <div class="skill-card">
+      <div class="skill-icon-row"><span class="skill-hex">⬡</span></div>
       <div class="skill-name">US Mortgage Credit Analysis</div>
       <div class="skill-desc">End-to-end credit review, liability validation, and reconciliation per US investor guidelines.</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">⬡</span>
+    <div class="skill-card">
+      <div class="skill-icon-row"><span class="skill-hex">⬡</span></div>
       <div class="skill-name">Wage & Other Income Calculation</div>
       <div class="skill-desc">Pay stubs, W-2s, Social Security, Disability, IRA, and Asset Depletion income analysis.</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">⬡</span>
+    <div class="skill-card">
+      <div class="skill-icon-row"><span class="skill-hex">⬡</span></div>
       <div class="skill-name">DTI & Liability Review</div>
       <div class="skill-desc">Precise debt-to-income calculations and liability omission/payoff resolution.</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">⬡</span>
-      <div class="skill-name">4 C's of Underwriting</div>
+    <div class="skill-card">
+      <div class="skill-icon-row"><span class="skill-hex">⬡</span></div>
+      <div class="skill-name">4 C's of Credit</div>
       <div class="skill-desc">Borrower risk assessment through Credit, Capacity, Capital, and Collateral evaluation.</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">⬡</span>
+    <div class="skill-card">
+      <div class="skill-icon-row"><span class="skill-hex">⬡</span></div>
       <div class="skill-name">Investor Guideline Compliance</div>
       <div class="skill-desc">Deep knowledge of US investor guidelines for mortgage loan origination and underwriting.</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">⬡</span>
+    <div class="skill-card">
+      <div class="skill-icon-row"><span class="skill-hex">⬡</span></div>
       <div class="skill-name">LOS — Encompass</div>
       <div class="skill-desc">Proficient with Encompass Loan Origination System and full Microsoft Office productivity suite.</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">⬡</span>
+    <div class="skill-card">
+      <div class="skill-icon-row"><span class="skill-hex">⬡</span></div>
       <div class="skill-name">Performance Reporting</div>
       <div class="skill-desc">Sheet management and reporting to track quality metrics and team productivity.</div>
     </div>
-    <div class="skill-item highlighted">
+    <div class="skill-card featured">
       <div class="skill-icon-row">
-        <span class="skill-icon">⬡</span>
-        <span class="highlight-badge">✦ Featured Skill</span>
+        <span class="skill-hex">⬡</span>
+        <span class="feat-badge">✦ Featured</span>
       </div>
       <div class="skill-name">Google Sheets Automation</div>
       <div class="skill-desc">AI-powered workflow automation using Google Sheets and Apps Script — building smart pipelines that reduce manual effort and improve data accuracy.</div>
@@ -775,75 +631,46 @@
 
 <!-- AWARDS -->
 <section id="awards" class="awards-section">
-  <div class="section-tag">Recognition</div>
-  <h2>Awards &amp; <em>achievements</em></h2>
-  <div class="awards-row fade-in">
-    <div class="award-box">
-      <div class="award-icon">★</div>
-      <div class="award-name">Rising Star</div>
-    </div>
-    <div class="award-box">
-      <div class="award-icon">★</div>
-      <div class="award-name">Individual Extra-Miler (×2)</div>
-    </div>
-    <div class="award-box">
-      <div class="award-icon">★</div>
-      <div class="award-name">Spot Award</div>
-    </div>
-  </div>
-  <div class="awards-row">
-    <div class="award-box">
-      <div class="award-icon">★</div>
-      <div class="award-name">Award of Excellence (Client)</div>
-    </div>
-    <div class="award-box">
-      <div class="award-icon">★</div>
-      <div class="award-name">iStar Award</div>
-    </div>
-    <div class="award-box">
-      <div class="award-icon">★</div>
-      <div class="award-name">Highflyer Award</div>
-    </div>
+  <div class="section-label">Recognition</div>
+  <h2>Awards & Achievements</h2>
+  <div class="awards-grid fade-in">
+    <div class="award-card"><div class="award-star">★</div><div class="award-name">Rising Star</div></div>
+    <div class="award-card"><div class="award-star">★</div><div class="award-name">Individual Extra-Miler (×2)</div></div>
+    <div class="award-card"><div class="award-star">★</div><div class="award-name">Spot Award</div></div>
+    <div class="award-card"><div class="award-star">★</div><div class="award-name">Award of Excellence (Client)</div></div>
+    <div class="award-card"><div class="award-star">★</div><div class="award-name">iStar Award</div></div>
+    <div class="award-card"><div class="award-star">★</div><div class="award-name">Highflyer Award</div></div>
   </div>
 </section>
 
 <!-- EDUCATION -->
-<section class="edu-section">
-  <div class="section-tag">Education</div>
-  <h2>Academic <em>background</em></h2>
+<section>
+  <div class="section-label">Education</div>
+  <h2>Academic Background</h2>
   <div class="edu-card fade-in">
     <div class="edu-year">2020–2023</div>
-    <div class="edu-details">
+    <div class="edu-info">
       <h3>Bachelor of Computer Applications</h3>
       <div class="edu-uni">Rani Channamma University, Belagavi</div>
-      <div style="display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center;">
-        <div class="emp-badge">★ &nbsp;Student of the Year</div>
-        <div class="emp-badge">CGPA &nbsp;8.57 / 10</div>
+      <div class="edu-badges">
+        <span class="edu-badge">★ Student of the Year</span>
+        <span class="edu-badge">CGPA &nbsp;8.57 / 10</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="section-tag">Contact</div>
-  <h2>Let's <em>connect</em></h2>
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Let's Connect</h2>
   <div class="contact-grid">
     <div class="contact-info fade-in">
-      <h3>"Open to new opportunities in US Mortgage Credit &amp; Underwriting roles."</h3>
+      <h3>"Open to new opportunities in US Mortgage Credit & Underwriting roles."</h3>
       <ul class="contact-list">
-        <li>
-          <span class="c-label">Phone</span>
-          <span class="c-val">+91 82962 91155</span>
-        </li>
-        <li>
-          <span class="c-label">Email</span>
-          <span class="c-val">ramkumbhar.work@gmail.com</span>
-        </li>
-        <li>
-          <span class="c-label">Location</span>
-          <span class="c-val">Pune, Maharashtra</span>
-        </li>
+        <li><span class="c-label">Phone</span><span class="c-val">+91 82962 91155</span></li>
+        <li><span class="c-label">Email</span><span class="c-val">ramkumbhar.work@gmail.com</span></li>
+        <li><span class="c-label">Location</span><span class="c-val">Pune, Maharashtra</span></li>
       </ul>
     </div>
     <div class="contact-cta fade-in">
@@ -859,16 +686,14 @@
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.1});
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
   const btn = document.getElementById('menuBtn');
   const menu = document.getElementById('mobileMenu');
   btn.addEventListener('click', () => menu.classList.toggle('open'));
-  function closeMenu() { menu.classList.remove('open'); }
+  function closeMenu(){ menu.classList.remove('open'); }
 </script>
-
 </body>
 </html>
